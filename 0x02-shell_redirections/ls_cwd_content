@@ -1,0 +1,15 @@
+total 8
+drwxr-xr-x 1 meenahkenz meenahkenz 4096 Sep 15 00:13 .
+drwxr-xr-x 1 meenahkenz meenahkenz 4096 Sep 14 21:39 ..
+-rwxr-xr-x 1 meenahkenz meenahkenz   32 Sep 13 18:44 0-hello_world
+-rwxr-xr-x 1 meenahkenz meenahkenz   28 Sep 14 21:46 1-confused_smiley
+-rwxr-xr-x 1 meenahkenz meenahkenz   28 Sep 14 21:48 2-hellofile
+-rwxr-xr-x 1 meenahkenz meenahkenz   39 Sep 14 21:51 3-twofiles
+-rwxr-xr-x 1 meenahkenz meenahkenz   29 Sep 14 21:53 4-lastlines
+-rwxr-xr-x 1 meenahkenz meenahkenz   29 Sep 14 21:54 5-firstlines
+-rwxr-xr-x 1 meenahkenz meenahkenz   40 Sep 14 22:04 6-third_line
+-rwxr-xr-x 1 meenahkenz meenahkenz   40 Sep 15 00:09 7-file
+-rwxr-xr-x 1 meenahkenz meenahkenz   36 Sep 15 00:13 8-cwd_state
+-rw-r--r-- 1 meenahkenz meenahkenz   13 Sep 13 18:46 README.md
+-rw-r--r-- 1 meenahkenz meenahkenz  801 Sep 14 21:59 iacta
+-rw-r--r-- 1 meenahkenz meenahkenz    0 Sep 15 00:14 ls_cwd_content
