@@ -1,37 +1,36 @@
-#!/usr/bin/python3
+ Python script that, using this REST API, for a given
+# employee ID, returns information about his/her Todo list progress.
 
-"""
-Python script that, using a REST API, for a given employee ID,
-returns information about his/her TODO list progress.
-"""
-
-from requests import get
-from sys import argv
+import requests
+import sys
 
 
 if __name__ == "__main__":
-    response = get('https://jsonplaceholder.typicode.com/todos/')
-    data = response.json()
-    completed = 0
-    total = 0
-    tasks = []
-    response2 = get('https://jsonplaceholder.typicode.com/users')
-    data2 = response2.json()
+    # Check if the script is provided with an employee ID as a command-line argument
+    if len(sys.argv) != 2:
+        sys.exit(1)
 
-    for i in data2:
-        if i.get('id') == int(argv[1]):
-            employee = i.get('name')
+    employee_ID = sys.argv[1]
+    jsonplaceholder = 'https://jsonplaceholder.typicode.com/users'
+    url = f'{jsonplaceholder}/{employee_ID}'
 
-    for i in data:
-        if i.get('userId') == int(argv[1]):
-            total += 1
+    # Make a GET request to the API
+    response = requests.get(url)
 
-            if i.get('completed') is True:
-                completed += 1
-                tasks.append(i.get('title'))
+    # Check if the request was successful (status code 200)
+    if response.status_code == 200:
+        employee_name = response.json().get('name')
+        Todourl = f'{url}/todos'
+        res = requests.get(Todourl)
+        tasks = res.json()
 
-    print("Employee {} is done with tasks({}/{}):".format(employee, completed,
-                                                          total))
+        # Filter completed tasks
+        done_tasks = [task for task in tasks if task.get('completed')]
 
-    for i in tasks:
-        print("\t {}".format(i))
+        # Display the employee TODO list progress
+        print("Employee {} is done with tasks({}/{}):".format(employee_name, len(done_tasks), len(tasks)))
+        for task in done_tasks:
+            print("\t{}".format(task.get('title')))
+    else:
+        # Display an error message if the request was not successful
+        print(f"Error: Unable to fetch data. Status code: {response.status_code}")
